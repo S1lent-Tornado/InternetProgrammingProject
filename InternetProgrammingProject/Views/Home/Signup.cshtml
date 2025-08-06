@@ -1,0 +1,85 @@
+﻿@model InternetProgrammingProject.Models.User
+@{
+}
+
+<h1>
+    Sign Up
+</h1>
+<form asp-action="Signup" asp-controller="User" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+        <label for="exampleInputEmail">Email Address</label>
+        <input asp-for="Email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="invalid-feedback">
+            Please enter a valid email address
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="exampleFirstName">First Name</label>
+            <input asp-for="FirstName" type="text" class=" form-control" id="exampleFirstName" placeholder="First Name" required />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Please enter your first name
+            </div>
+        </div>
+        <div class="col">
+            <label for="exampleLastName">Last Name</label>
+            <input asp-for="LastName" type="text" class=" form-control" id="exampleLastName" placeholder="Last Name" required />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+            <div class="invalid-feedback">
+                Please enter your Last name
+            </div>
+        </div>
+    </div>
+    <div class=" form-group">
+        <label for=" exampleCountrySelect">Country</label>
+        <select asp-for="Country" multiple class=" form-control" id="exampleCountrySelect" required>
+            <option>Canada</option>
+            <option>Japan</option>
+            <option>Mexico</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+        </select>
+        <span asp-validation-for="Country" class="text-danger"></span>
+        <div class="invalid-feedback">
+            Please select a country
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="examplePassword">Password</label>
+        <input asp-for="Password" type="password" class="form-control" id=" examplePassword" placeholder="Enter password" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <small id="examplePassword" class="form-text text-muted">
+            Your password should be at least 8 characters long, begin with a letter, include an uppercase letter, a lowercase letter, and a digit
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="retypePassword">Retype Password</label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" id="retypePassword" placeholder="Retype password" required />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Finish</button>
+</form>
+
+<script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

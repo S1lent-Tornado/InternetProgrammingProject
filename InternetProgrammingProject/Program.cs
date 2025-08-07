@@ -11,6 +11,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DbSignupContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<DbTasksContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SecondConnection")));
+builder.Services.AddDbContext<DbResourceContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ThirdConnection")));
 
 var app = builder.Build();
 

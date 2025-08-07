@@ -32,6 +32,26 @@ namespace InternetProgrammingProject.Controllers
         {
             return View();
         }
+        public IActionResult Goals()
+        {
+            return View();
+        }
+
+        public IActionResult LoginSuccessful()
+        {
+            return View();
+        }
+
+        public IActionResult Resources()
+        {
+            return View();
+        }
+
+        public IActionResult Analytics()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

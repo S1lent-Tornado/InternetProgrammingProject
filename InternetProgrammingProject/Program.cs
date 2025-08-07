@@ -1,7 +1,16 @@
+using InternetProgrammingProject.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add session services
+builder.Services.AddSession();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DbSignupContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -13,11 +22,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// Add session services
-builder.Services.AddSession();
-
-builder.Services.AddControllersWithViews();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -25,19 +29,6 @@ app.UseRouting();
 
 // Enable session before authorization
 app.UseSession();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
 
 app.UseAuthorization();
 

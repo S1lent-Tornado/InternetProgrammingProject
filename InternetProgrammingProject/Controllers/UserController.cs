@@ -49,8 +49,8 @@ namespace WebApplication5.Controllers
                 ViewBag.Error = "Invalid login credentials";
                 return View("~/Views/Home/Login.cshtml");
             }
-            //ViewBag.FirstName = user.FirstName;
-            //ViewBag.LastName = user.LastName;
+            ViewBag.FirstName = user.FirstName;
+            ViewBag.LastName = user.LastName;
             HttpContext.Session.SetString("UserEmail", user.Email);
             HttpContext.Session.SetString("UserFirstName", user.FirstName);
             HttpContext.Session.SetString("UserLastName", user.LastName);
